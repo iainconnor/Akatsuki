@@ -197,11 +197,6 @@ class ArgumentBuilderModel extends SourceMappingModel {
 					return info;
 				}).withFieldPredicate(modelPredicate);
 
-
-		// discard the value so that we don't overwrite them if value also stored with @Retained
-		retainerClassBuilder.withAnalysisTransformation((context1, direction, element,
-				analysis) -> analysis.transform(s -> s + ";\n{{bundle}}.remove({{keyName}})\n"));
-
 		builderTypeBuilder
 				.addType(retainerClassBuilder.build().addModifiers(Modifier.STATIC).build());
 

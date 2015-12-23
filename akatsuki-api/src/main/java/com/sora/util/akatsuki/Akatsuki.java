@@ -144,10 +144,10 @@ public class Akatsuki {
 
 	static void restore(ClassLoader loader, Object instance, Bundle state, Bundle argument) {
 		checkInstance(instance, "instance");
-		if (state != null)
-			findRetainerInstance(loader, instance, Retained.class).restore(instance, state);
 		if (argument != null)
 			findRetainerInstance(loader, instance, Arg.class).restore(instance, argument);
+		if (state != null)
+			findRetainerInstance(loader, instance, Retained.class).restore(instance, state);
 	}
 
 	/**
